@@ -2,6 +2,7 @@ unicode string, for better alignment with CJK characters
 
 length by wcwidth, without unprintable characters
 
+'''
 >>> from ustr import Ustr
 >>> mystr = Ustr('测试test', 6)
 >>>
@@ -57,3 +58,5 @@ test      test
 2
 >>> print(Ustr.len('测试test', 6))
 6
+
+'''
