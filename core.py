@@ -105,7 +105,7 @@ class Ustr(str):
             if n[1] is None and n[2] is None and n[3] is None:
                 continue
             name = n[1]
-            value = string.Formatter.get_value('', name if name else j, args, kwargs)
+            value = string.Formatter.get_value('', int(name) if name.isdigit() else name if name else j, args, kwargs)
             if not name:
                 j = j +1
             if not issubclass(type(value), str):
@@ -119,6 +119,8 @@ class Ustr(str):
                     oldlen = int(reresult.group(0))
                     newlen = oldlen - diff
                     newlength = re.sub('\d+', str(newlen), oldlength, 1)
+                    if newlength == '0':
+                        newlength = ''
                     fields[i] = (fields[i][0], fields[i][1], newlength, fields[i][3])
 
         if changed:
