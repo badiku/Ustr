@@ -1,11 +1,8 @@
 
 
 
-============
 ustr
-============
-
-
+-------
 
 unicode string, for better alignment with CJK characters
 
