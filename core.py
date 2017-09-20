@@ -9,9 +9,11 @@ def getfont():
     return stdout.GetCurrentConsoleFont()[0]
 
 
-currentfont = 1
+box_char_width = 1
+
 try:
-    currentfont = getfont()
+    if getfont() != 1:
+        box_char_width = 2
 except Exception as e:
     pass  # no need to check, ignore any error
 
@@ -19,10 +21,7 @@ except Exception as e:
 def uwcwidth(wc):
     # box-drawing characters is 2 in some fonts
     if 0x2500 <= ord(wc) < 0x2573:
-        if currentfont != 1:
-            return 2
-        else:
-            return 1
+        return box_char_width
     return wcwidth(wc)
 
 
