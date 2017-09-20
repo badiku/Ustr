@@ -2,7 +2,7 @@ from wcwidth import wcwidth
 import re
 import string
 
-def getfont():
+def _getfont():
     # check terminal font, 11 means double width for box-drawing characters
     import win32console
     stdout = win32console.GetStdHandle(win32console.STD_OUTPUT_HANDLE)
@@ -12,13 +12,13 @@ def getfont():
 box_char_width = 1
 
 try:
-    if getfont() != 1:
+    if _getfont() != 1:
         box_char_width = 2
 except Exception as e:
     pass  # no need to check, ignore any error
 
 
-def uwcwidth(wc):
+def _uwcwidth(wc):
     # box-drawing characters is 2 in some fonts
     if 0x2500 <= ord(wc) < 0x2573:
         return box_char_width
@@ -35,7 +35,7 @@ class Ustr(str):
         diff = 0
         need = []
         for char in content[idx]:
-            wcw = uwcwidth(char)
+            wcw = _uwcwidth(char)
             if wcw > 0:
                 need.append(char)
                 width += wcw

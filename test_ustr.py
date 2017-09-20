@@ -1,4 +1,6 @@
 from ustr import Ustr
+# import ustr
+# ustr.core.box_char_width = 2
 
 
 def test_test():
