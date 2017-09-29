@@ -3,7 +3,7 @@ ustr
 
 unicode string, for better alignment with CJK characters
 
-length by wcwidth, without unprintable characters
+get length by wcwidth, without unprintable characters
 
 
     >>> from ustr import Ustr
