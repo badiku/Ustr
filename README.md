@@ -3,6 +3,7 @@ ustr
 
 unicode string, for better alignment with CJK characters
 
+
 get length by wcwidth, without unprintable characters
 
 
